@@ -14,11 +14,12 @@ for old_dir in files:
     old_file = old_dir.split("/")[-1]
     new_file = old_file.replace(" ", "_")
     new_dir = os.path.join(base_dir, new_file)
-    cmd1 = f"cp {old_file} {new_file}"
-    cmd2 = f"rm -rf {old_file}"
-    for cmd in [cmd1, cmd2]:
-        exit_code = sp.call(cmd, shell=True)
-        assert exit_code == 0 , cmd
+    # if old_file != new_file:
+    #     cmd1 = f"cp '{old_dir}' '{new_dir}'"
+    #     cmd2 = f"rm -rf '{old_dir}'"
+    #     for cmd in [cmd1, cmd2]:
+    #         exit_code = sp.call(cmd, shell=True)
+    #         assert exit_code == 0 , cmd
     lst = [
         "[",
         new_file.replace(".pdf", ""),
